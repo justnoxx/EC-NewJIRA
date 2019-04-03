@@ -20,6 +20,7 @@ Retrieving ECPDF::Client::REST object from L<ECPDF::Context> is preferred, becau
 some components may be applied automatically to ECPDF::Client::REST object, like proxy and L<ECPDF::Log>.
 
 %%%LANG=perl%%%
+
     sub stepGetContent {
         my ($pluginObject) = @_;
 
@@ -34,11 +35,10 @@ some components may be applied automatically to ECPDF::Client::REST object, like
         # printing response content
         print "Content: ", $response->decoded_content();
     }
+
 %%%LANG%%%
 
 =head1 METHODS
-
-=over
 
 =cut
 
@@ -62,7 +62,9 @@ sub classDefinition {
     };
 }
 
-=item B<new>
+=head2 new($parameters)
+
+=head3 Description
 
 Constructor. Creates new ECPDF::Client::REST object.
 
@@ -88,7 +90,28 @@ The password that is being used for username for proxy authorization.
 
 Debug enabling switch. Debug output for ECPDF::Proxy will be enabled if this is passed as true.
 
+=back
+
+=head3 Parameters
+
+=over 4
+
+=item (Optional)(HASH ref) A parameters that are required to get additional things from ECPDF::Client::REST. Details above.
+
+=back
+
+=head3 Returns
+
+=over
+
+=item ECPDF::Client::REST
+
+=back
+
+=head3 Usage
+
 %%%LANG=perl%%%
+
         my $rest = ECPDF::Client::REST->new({
             proxy => {
                 url => 'http://squid:3128',
@@ -96,11 +119,10 @@ Debug enabling switch. Debug output for ECPDF::Proxy will be enabled if this is 
                 password => 'user2'
             }
         });
+
 %%%LANG%%%
 
 In that example ECPDF::Rest loads automatically L<ECPDF::Component::Proxy> and creates new ECPDF::Client::REST.
-
-=back
 
 =cut
 
@@ -148,7 +170,7 @@ sub new {
 }
 
 
-=item B<newRequest>
+=head2 newRequest(@parameters)
 
 Creates new HTTP::Request object.
 
@@ -156,10 +178,30 @@ This wrapper has been created to implement request augmenations using components
 
 For example, if ECPDF::Client::Rest has been created with proxy support, it will return HTTP::Request object with applied proxy fields.
 
-This method has the same API as HTTP::Request::new();
+This method has the same interface and usage as as HTTP::Request::new();
+
+=head3 Parameters
+
+=over 4
+
+=item HTTP::Request::new() parameters.
+
+=back
+
+=head3 Returns
+
+=over 4
+
+=item HTTP::Request
+
+=back
+
+=head3 Usage
 
 %%%LANG=perl%%%
+
     my $request = $rest->newRequest(GET => 'https://electric-cloud.com');
+
 %%%LANG%%%
 
 =cut
@@ -177,7 +219,9 @@ sub newRequest {
 }
 
 
-=item B<doRequest>
+=head2 doRequest($httpRequest)
+
+=head3 Description
 
 Performs HTTP request, using HTTP::Request object as parameter.
 
@@ -185,10 +229,30 @@ Also, this method supports API of LWP::UserAgent::request() method.
 
 This method returns HTTP::Response object.
 
+=head3 Parameters
+
+=over 4
+
+=item LWP::UserAgent::request() parameters
+
+=back
+
+=head3 Returns
+
+=over 4
+
+=item HTTP::Response
+
+=back
+
+=head3 Usage
+
 %%%LANG=perl%%%
+
     my $request = $rest->newRequest(GET => 'https://electric-cloud.com');
     my $response = $rest->doRequest($request);
     print $response->decoded_content();
+
 %%%LANG%%%
 
 =cut
@@ -201,15 +265,39 @@ sub doRequest {
 }
 
 
-=item B<augmentUrlWithParams>
+=head2 augmentUrlWithParams($url, $arguments)
+
+=head3 Description
 
 Helper method, that provides a mechanism for adding query parameters to URL, with proper escaping.
 
+=head3 Parameters
+
+=over 4
+
+=item (Required)(String) Url that should be augmented with query parameters.
+
+=item (Required)(HASH ref) hash of parameters to be escaped and added to the query string.
+
+=back
+
+=head3 Returns
+
+=over 4
+
+=item (String) Url with added query parameters.
+
+=back
+
+=head3 Usage
+
 %%%LANG=perl%%%
+
     my $url = 'http://localhost:8080;
 
     $url = $rest->augmentUrlWithParams($url, {one=>'two'});
     # url = http://localhost:8080?one=two
+
 %%%LANG%%%
 
 =cut
@@ -238,14 +326,9 @@ sub augmentUrlWithParams {
     }
     $url .= $gs;
 
-    $url =~ s/\?$//;
-
+    # $url =~ s/\?$//;
     return $url;
 }
 
-
-=back
-
-=cut
 
 1;

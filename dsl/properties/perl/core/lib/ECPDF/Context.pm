@@ -143,7 +143,6 @@ sub getRuntimeParameters {
             my $row = $p->getParameter($key);
 
             next unless $row;
-            print "Ref row: ", ref $row, "\n";
             if (ref $row eq 'ECPDF::Credential') {
                 my $prefix = '';
 
