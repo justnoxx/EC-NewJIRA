@@ -38,11 +38,24 @@ configuration:
      userNameLabel: Username
      required: true
      passwordLabel: Password
+     dependsOn: authType
+     condition: '${authType} == "Basic"'
+   - name: oauth_credential
+     type: credential
+     label: Oauth Credential
+     userNameLabel: Oauth Token
+     required: false
+     passwordLabel: Private Key
+     dependsOn: authType
+     condition: '${authType} == "OAuth1.0"'
+     credentialType: key
    - name: oauthConsumerKey
      type: entry
      label: OAUth 1.0 Consumer Key
      required: 0
      documentation: An OAuth 1.0 Consumer Key
+     dependsOn: authType
+     condition: '${authType} == "OAuth1.0"'
    - name: httpProxyUrl
      type: entry
      label: HTTP proxy Address
@@ -52,7 +65,7 @@ configuration:
      type: credential
      label: Proxy Credential
      userNameLabel: Username
-     required: true
+     required: false
      passwordLabel: Password
    - name: debugLevel
      label: Debug Level

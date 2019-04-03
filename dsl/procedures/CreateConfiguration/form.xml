@@ -4,27 +4,27 @@
     <property>config</property>
     <required>1</required>
     <documentation>The name for the created configuration</documentation>
-    <label>Configuration Name</label>
+    <label>Configuration Name:</label>
   </formElement>
   <formElement>
     <type>entry</type>
     <property>desc</property>
     <required>0</required>
     <documentation>Configuration description</documentation>
-    <label>Description</label>
+    <label>Description:</label>
   </formElement>
   <formElement>
     <type>entry</type>
     <property>jiraUrl</property>
     <required>1</required>
     <documentation>URL of jira server.</documentation>
-    <label>URL of JIRA Server</label>
+    <label>URL of JIRA Server:</label>
   </formElement>
   <formElement>
     <type>select</type>
     <property>authType</property>
     <required>1</required>
-    <label>Auth Type</label>
+    <label>Auth Type:</label>
     <option>
       <name>Basic</name>
       <value>Basic</value>
@@ -39,9 +39,23 @@
     <type>credential</type>
     <property>credential</property>
     <required>1</required>
-    <label>Credential</label>
+    <label>Credential:</label>
     <userNameLabel>Username</userNameLabel>
     <passwordLabel>Password</passwordLabel>
+    <dependsOn>authType</dependsOn>
+    <condition>${authType} == "Basic"</condition>
+    <attachedAsParameterToStep>createConfiguration</attachedAsParameterToStep>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>oauth_credential</property>
+    <required>0</required>
+    <label>Oauth Credential:</label>
+    <userNameLabel>Oauth Token</userNameLabel>
+    <passwordLabel>Private Key</passwordLabel>
+    <dependsOn>authType</dependsOn>
+    <condition>${authType} == "OAuth1.0"</condition>
+    <credentialType>key</credentialType>
     <attachedAsParameterToStep>createConfiguration</attachedAsParameterToStep>
   </formElement>
   <formElement>
@@ -49,20 +63,22 @@
     <property>oauthConsumerKey</property>
     <required>0</required>
     <documentation>An OAuth 1.0 Consumer Key</documentation>
-    <label>OAUth 1.0 Consumer Key</label>
+    <label>OAUth 1.0 Consumer Key:</label>
+    <dependsOn>authType</dependsOn>
+    <condition>${authType} == "OAuth1.0"</condition>
   </formElement>
   <formElement>
     <type>entry</type>
     <property>httpProxyUrl</property>
     <required>0</required>
     <documentation>A url that should be used as proxy URL.</documentation>
-    <label>HTTP proxy Address</label>
+    <label>HTTP proxy Address:</label>
   </formElement>
   <formElement>
     <type>credential</type>
     <property>proxy_credential</property>
-    <required>1</required>
-    <label>Proxy Credential</label>
+    <required>0</required>
+    <label>Proxy Credential:</label>
     <userNameLabel>Username</userNameLabel>
     <passwordLabel>Password</passwordLabel>
     <attachedAsParameterToStep>createConfiguration</attachedAsParameterToStep>
@@ -71,7 +87,7 @@
     <type>select</type>
     <property>debugLevel</property>
     <required>0</required>
-    <label>Debug Level</label>
+    <label>Debug Level:</label>
     <option>
       <name>Info</name>
       <value>0</value>
