@@ -8,6 +8,7 @@ Please not not edit this file manually as it will be regenerated.
     <property>config</property>
     <required>1</required>
     <documentation>Previously defined configuration for the plugin</documentation>
+    <label>Configuration Name:</label>
     <configuration>1</configuration>
   </formElement>
   <formElement>
@@ -15,6 +16,6 @@ Please not not edit this file manually as it will be regenerated.
     <property>issueId</property>
     <required>1</required>
     <documentation>An id for jira issue to be retrieved.</documentation>
-    <label>Issue ID</label>
+    <label>Issue ID:</label>
   </formElement>
 </editor>
