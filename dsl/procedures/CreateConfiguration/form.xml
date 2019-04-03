@@ -1,0 +1,89 @@
+<editor>
+  <formElement>
+    <type>entry</type>
+    <property>config</property>
+    <required>1</required>
+    <documentation>The name for the created configuration</documentation>
+    <label>Configuration Name</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>desc</property>
+    <required>0</required>
+    <documentation>Configuration description</documentation>
+    <label>Description</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>jiraUrl</property>
+    <required>1</required>
+    <documentation>URL of jira server.</documentation>
+    <label>URL of JIRA Server</label>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>authType</property>
+    <required>1</required>
+    <label>Auth Type</label>
+    <option>
+      <name>Basic</name>
+      <value>Basic</value>
+    </option>
+    <option>
+      <name>OAuth1.0</name>
+      <value>OAuth1.0</value>
+    </option>
+    <value>Basic</value>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>credential</property>
+    <required>1</required>
+    <label>Credential</label>
+    <userNameLabel>Username</userNameLabel>
+    <passwordLabel>Password</passwordLabel>
+    <attachedAsParameterToStep>createConfiguration</attachedAsParameterToStep>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>oauthConsumerKey</property>
+    <required>0</required>
+    <documentation>An OAuth 1.0 Consumer Key</documentation>
+    <label>OAUth 1.0 Consumer Key</label>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>httpProxyUrl</property>
+    <required>0</required>
+    <documentation>A url that should be used as proxy URL.</documentation>
+    <label>HTTP proxy Address</label>
+  </formElement>
+  <formElement>
+    <type>credential</type>
+    <property>proxy_credential</property>
+    <required>1</required>
+    <label>Proxy Credential</label>
+    <userNameLabel>Username</userNameLabel>
+    <passwordLabel>Password</passwordLabel>
+    <attachedAsParameterToStep>createConfiguration</attachedAsParameterToStep>
+  </formElement>
+  <formElement>
+    <type>select</type>
+    <property>debugLevel</property>
+    <required>0</required>
+    <label>Debug Level</label>
+    <option>
+      <name>Info</name>
+      <value>0</value>
+    </option>
+    <option>
+      <name>Debug</name>
+      <value>1</value>
+    </option>
+    <option>
+      <name>Trace</name>
+      <value>2</value>
+    </option>
+    <value>0</value>
+  </formElement>
+</editor>

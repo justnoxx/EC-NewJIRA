@@ -17,12 +17,32 @@ configuration:
      label: Configuration Name
      required: true
      documentation: The name for the created configuration
+   - name: jiraUrl
+     type: entry
+     label: URL of JIRA Server
+     required: true
+     documentation: URL of jira server.
+   - name: authType
+     label: Auth Type
+     type: select
+     required: true
+     value: Basic
+     options:
+       - name: Basic
+         value: Basic
+       - name: OAuth1.0
+         value: OAuth1.0
    - name: credential
      type: credential
      label: Credential
      userNameLabel: Username
      required: true
      passwordLabel: Password
+   - name: oauthConsumerKey
+     type: entry
+     label: OAUth 1.0 Consumer Key
+     required: 0
+     documentation: An OAuth 1.0 Consumer Key
    - name: httpProxyUrl
      type: entry
      label: HTTP proxy Address

@@ -1,0 +1,20 @@
+<!--
+This form is generated automatically from the parameters manifest.
+Please not not edit this file manually as it will be regenerated.
+-->
+<editor>
+  <formElement>
+    <type>entry</type>
+    <property>config</property>
+    <required>1</required>
+    <documentation>Previously defined configuration for the plugin</documentation>
+    <configuration>1</configuration>
+  </formElement>
+  <formElement>
+    <type>entry</type>
+    <property>issueId</property>
+    <required>1</required>
+    <documentation>An id for jira issue to be retrieved.</documentation>
+    <label>Issue ID</label>
+  </formElement>
+</editor>
